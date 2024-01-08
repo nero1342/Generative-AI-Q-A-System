@@ -2,16 +2,10 @@ version: '3.5'
 
 services:
   frontend:
-    build:
-      context: ./src/frontend
-      port: 
-        - "3000:3000"
-      depends_on:
-        - backend
-  
+    image: nero18/frontend:latest
+    ports:
+      - 3000:3000
   backend:
-    build:
-      context: ./src/backend
-      environment:
-      ports:
-        - "8000:8000"
+    image: nero18/backend:latest
+    ports:
+      - 3001:3001

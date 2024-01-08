@@ -1,3 +1,15 @@
-chroma-hnswlib==0.7.3 
-pyarrow==14.0.2
-poetry==1.7.1
+# numpy 
+# wheel 
+# pyarrow 
+# setuptools
+# onnxruntime
+# fastapi
+# uvicorn
+# pydantic-settings
+# python-multipart
+# langchain
+# openai
+# pypdf
+# tiktoken
+chromadb
+# pymilvus

@@ -1,28 +1,41 @@
 # Use an official Python runtime as a parent image
-FROM python:3.11.7-alpine3.19
+FROM python:3.11-slim-bullseye
 
-RUN apk add --update alpine-sdk
+RUN apt-get update --fix-missing && apt-get install -y --fix-missing build-essential
 
 # Set the working directory to /app
-RUN mkdir -p /app
-WORKDIR /app
+RUN mkdir -p /backend
+WORKDIR /backend
 
 # Copy only the requirements files to the container
-COPY ./pyproject.toml ./poetry.lock ./requirements.txt ./
-
-# Set environment variables
-# ENV PYTHONDONTWRITEBYTECODE 1
-# ENV PYTHONUNBUFFERED 1
+COPY requirements.txt poetry.lock pyproject.toml README.md ./
 
 # # Install dependencies
-RUN pip install --upgrade --progress-bar off pyarrow
+RUN pip install --progress-bar off poetry
+
 # RUN pip install --progress-bar off -r requirements.txt
-# RUN poetry config virtualenvs.create false
-# RUN poetry install --no-interaction --no-ansi
+RUN poetry config virtualenvs.create false
+RUN poetry install --no-interaction --no-ansi
 
-
+ENV OPENAI_API_KEY='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'
 # # Copy the application code to the container
-# COPY ./ ./
+COPY ./app ./
 
-# # uvicorn main:app --reload
-# CMD ["uvicorn", "main:app", "--reload"]
+EXPOSE $PORT
+
+# # Set host to localhost / the docker image
+# ENV NUXT_HOST=0.0.0.0
+
+# # Set app port
+# ENV NUXT_PORT=$PORT
+
+# # Set the base url
+# ENV PROXY_API=$PROXY_API
+
+# # Set the browser base url
+# ENV PROXY_LOGIN=$PROXY_LOGIN
+
+RUN pip install --progress-bar off langchain pysqlite3-binary
+
+# CMD ["uvicorn", "main:app", "--port", "3001"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
