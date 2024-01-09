@@ -30,6 +30,7 @@ const DocumentUploader: React.FC = () => {
         },
     });
     useEffect(() => {
+        console.log("Check")
         http.get('/health')
             .then((response) => {
                 console.log("Health-check ok - " + SERVER_URL);
@@ -52,6 +53,7 @@ const DocumentUploader: React.FC = () => {
     });
 
     const handleSubmit = async () => {
+        console.log(name)
         if (file && name) {
             const formData = new FormData();
             formData.append('file', file);

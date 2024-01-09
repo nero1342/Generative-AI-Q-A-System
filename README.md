@@ -1,5 +1,7 @@
 # Industrial Generative-AI-Q&A-System (IGAS)
 
+Presentation slides [here](https://docs.google.com/presentation/d/1y8nZeZ3vzP_11yXDB7j04_3ecT4gAhGrD_9_y2_VjZs/edit?usp=sharing)
+
 ## Install IGAS with Docker Compose
 ### Start 
 ```

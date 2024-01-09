@@ -2,11 +2,11 @@ version: '3.5'
 
 services:
   frontend:
-    image: nero18/frontend:latest
+    image: nero18/igas-frontend:latest
     ports:
       - 3000:3000
   backend:
-    image: nero18/backend:latest
+    image: nero18/igas-backend:latest
     environment:
       - OPENAI_API_KEY='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'
     ports:

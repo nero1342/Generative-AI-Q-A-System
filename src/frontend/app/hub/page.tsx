@@ -6,8 +6,8 @@ import Navbar from '@/components/Navbar';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 import {
     Container,
@@ -34,17 +34,17 @@ export default function DocsHub() {
     const handleDeleteAll = () => {
         console.log("Delete All")
         http.delete("/api/v1/documents/").then((response) => {
-            toast.success('Delete all documents successfully!');
+            // toast.success('Delete all documents successfully!');
             window.location.reload();
         }, (error) => {
-            toast.error('Can not connect to server!');
+            // toast.error('Can not connect to server!');
         })
     };
 
     const handleDeleteSingleDocument = () => {
         console.log("Delete ", documentId)
         http.delete("/api/v1/documents/" + documentId).then((response) => {
-            toast.success('Delete document successfully!');
+            // toast.success('Delete document successfully!');
             window.location.reload();
         }, (error) => {
             if (axios.isAxiosError(error))  {
@@ -81,7 +81,7 @@ export default function DocsHub() {
             >
                 Delete all documents
             </Button>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
         </main>
     );
 }
