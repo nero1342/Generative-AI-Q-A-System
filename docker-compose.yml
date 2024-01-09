@@ -7,5 +7,7 @@ services:
       - 3000:3000
   backend:
     image: nero18/backend:latest
+    environment:
+      - OPENAI_API_KEY='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'
     ports:
-      - 3001:3001
+      - 8000:8000

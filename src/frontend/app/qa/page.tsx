@@ -18,6 +18,7 @@ import {
 const SERVER_URL = "http://127.0.0.1:8000" // process.env.SERVER_URL;
 
 export default function QA() {
+    console.log(SERVER_URL)
     const http = axios.create({
         baseURL: SERVER_URL,
         headers: {
@@ -61,10 +62,12 @@ export default function QA() {
     };
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <Container className="flex min-h-screen flex-col items-center justify-between p-24">
             <Navbar />
+            <h1 style={titleStyle}>Q&A Page</h1>
             <DocumentSelection setSelectedDocumentId={setDocumentId}/>
-            <Paper elevation={3} style={paperStyle}>
+            
+            <Paper elevation={3} style={paperStyle} className='flex items-center flex-col'>
                 <TextField
                     fullWidth
                     label="Ask a Question"
@@ -72,15 +75,16 @@ export default function QA() {
                     value={newQuestion}
                     onChange={handleQuestionChange}
                 />
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleAskQuestion}
-                    style={addButtonStyle}
-                >
-                    Ask Question
-                </Button>
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={handleAskQuestion}
+                style={addButtonStyle}
+            >
+                Ask Question
+            </Button>
             </Paper>
+            
             <Paper elevation={3} style={paperStyle}>
                 <Typography variant="body1" style={questionStyle}>
                     <b>Question:</b> {question}
@@ -88,7 +92,7 @@ export default function QA() {
                     <b>Answer:</b> {answer}
                 </Typography>
             </Paper>
-        </main>
+        </Container>
     );
 }
 
@@ -96,13 +100,41 @@ const paperStyle: React.CSSProperties = {
     padding: '20px',
     marginBottom: '20px',
     backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+
 };
 
 const addButtonStyle: React.CSSProperties = {
     marginTop: '10px',
+    display: 'inline-block',
+    padding: '10px 20px',
+    fontSize: '12px',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    textDecoration: 'none',
+    borderRadius: '5px',
+    color: '#fff',
+    backgroundColor: '#3498db',
+    border: '2px solid #2980b9',
+    transition: 'background-color 0.3s, border-color 0.3s',
+    cursor: 'pointer',
+    outline: 'none',
 };
-
 
 const questionStyle: React.CSSProperties = {
     marginBottom: '10px',
 };
+
+
+const titleStyle: React.CSSProperties = {
+    position: 'absolute',
+    top: '10px',
+    left: '10px',
+    fontSize: '24px',
+    fontWeight: 'bold',
+    color: '#333', // Set your desired font color
+    // Add more styles as needed
+    // ...
+  };

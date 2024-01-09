@@ -20,15 +20,14 @@ const Navbar: React.FC = () => {
           </Link>
         </li>
         <li>
-          <Link href="/qa">
-            ?
+          <Link href="/hub">
+            Docs Hub
           </Link>
         </li>
       </ul>
     </nav>
   );
 };
-
 
 
 export default Navbar;

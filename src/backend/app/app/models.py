@@ -15,3 +15,10 @@ class QuestionModel(BaseModel):
 
 class DocumentIn(BaseModel):
     name: str
+
+class UserQuestionIn(BaseModel):
+    document_id: str
+    question: str 
+
+class AnswerOut(BaseModel):
+    answer: str

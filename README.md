@@ -14,12 +14,16 @@ Now check if the containers are up and running.
 $ sudo docker compose ps
 ```
 After system starts, there will be two docker containers running, including frontend and backend services.
+- Frontend will be served in http://localhost:3000/
+- Backend will be served in http://localhost:8000/
 
 ### Stop
 To stop system, run
 ```
 $ sudo docker-compose down
 ```
+
+## Other way to run application
 
 ## Check-list
 ### Frontend
